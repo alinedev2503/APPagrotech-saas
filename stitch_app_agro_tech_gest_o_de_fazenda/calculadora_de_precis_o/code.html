@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6dec13",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182210",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col md:flex-row h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-primary/20 p-6 gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-slate-900">
+<span class="material-symbols-outlined text-2xl font-bold">agriculture</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">AgroPop</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Painel</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-medium">Análises</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg bg-primary text-slate-900" href="#">
+<span class="material-symbols-outlined font-fill">calculate</span>
+<span class="font-bold">Calculadora</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-medium">Histórico</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-medium">Mapas</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-primary/10">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="Avatar do usuário" data-alt="Foto de perfil do agricultor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPGNpe5-3nK4sXK_q1gIEE4vR2Pby8jidcWwZEOHN81MiGnn25_RQ1-Ubdhv4gB9MpCly9QLyizh9o1EnlBCFZKLSmGD2e8SkHJ46AfQ1SkNeAyMqAuTZGA-uK63W8JeU-EkHeJfENDBDhLJWPZKfQXt4-WyYY3x83iPds5p6jWDgm0D6hdTXQ-zp8ZOTBe4LlBESgWeIfdVciHtOKTvTUgiklFuefQ48OwdxaakwPUpVshqUTAHevkHfX0IB4qJLKN_aJLjUu5hDx"/>
+</div>
+<div>
+<p class="text-sm font-bold">João Silva</p>
+<p class="text-xs opacity-60">Plano Pro</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto no-scrollbar">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-primary/10">
+<div class="flex flex-col">
+<h2 class="text-lg font-bold">Calculadora de Precisão</h2>
+<p class="text-xs text-primary font-medium uppercase tracking-wider">Recomendação de Adubação</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="p-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Input Section -->
+<section class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">science</span>
+                                Análise de Solo
+                            </h3>
+<span class="text-xs font-medium px-2 py-1 bg-primary/20 rounded">mg/dm³ | cmolc/dm³</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">Nitrogênio (N)</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">N</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">Fósforo (P)</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">P</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">Potássio (K)</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">K</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">Matéria Orgânica</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">MO</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">Alumínio (Al)</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">Al</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold opacity-70">pH Água</label>
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-background-dark border-primary/20 rounded-lg h-14 text-xl font-bold px-4 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+<span class="absolute right-4 top-4 text-xs font-bold opacity-40">pH</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex gap-3">
+<button class="flex-1 bg-primary text-slate-900 font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">auto_fix</span>
+                                Calcular Necessidades
+                            </button>
+<button class="px-6 py-4 bg-primary/10 border border-primary/20 text-slate-900 dark:text-slate-100 font-bold rounded-xl hover:bg-primary/20 transition-all">
+                                Limpar
+                            </button>
+</div>
+</div>
+<div class="bg-primary/5 p-4 rounded-xl border border-dashed border-primary/30">
+<p class="text-sm italic opacity-80 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">info</span>
+                            Os resultados são baseados nas Tabelas Oficiais de Adubação. Consulte sempre um agrônomo responsável.
+                        </p>
+</div>
+</section>
+<!-- Results/Graphical Section -->
+<section class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm h-full">
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bar_chart</span>
+                            Balanço NPK Projetado
+                        </h3>
+<div class="space-y-8">
+<!-- Nitrogen Graph -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold">Nitrogênio (N)</span>
+<span class="text-xl font-display font-bold text-primary">120 <span class="text-xs font-normal">kg/ha</span></span>
+</div>
+<div class="w-full h-4 bg-background-light dark:bg-background-dark rounded-full overflow-hidden border border-primary/10">
+<div class="h-full bg-primary" style="width: 75%;"></div>
+</div>
+<p class="text-[10px] uppercase font-bold opacity-50">Déficit crítico detectado</p>
+</div>
+<!-- Phosphorus Graph -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold">Fósforo (P)</span>
+<span class="text-xl font-display font-bold text-primary">85 <span class="text-xs font-normal">kg/ha</span></span>
+</div>
+<div class="w-full h-4 bg-background-light dark:bg-background-dark rounded-full overflow-hidden border border-primary/10">
+<div class="h-full bg-primary/60" style="width: 50%;"></div>
+</div>
+<p class="text-[10px] uppercase font-bold opacity-50">Manutenção recomendada</p>
+</div>
+<!-- Potassium Graph -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold">Potássio (K)</span>
+<span class="text-xl font-display font-bold text-primary">45 <span class="text-xs font-normal">kg/ha</span></span>
+</div>
+<div class="w-full h-4 bg-background-light dark:bg-background-dark rounded-full overflow-hidden border border-primary/10">
+<div class="h-full bg-primary/30" style="width: 25%;"></div>
+</div>
+<p class="text-[10px] uppercase font-bold opacity-50">Nível adequado para arranque</p>
+</div>
+</div>
+<div class="mt-12 p-4 bg-background-light dark:bg-background-dark rounded-lg">
+<h4 class="font-bold text-sm mb-3">Recomendação de Formulação</h4>
+<div class="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-md border border-primary/20">
+<span class="text-2xl font-bold tracking-widest text-primary">20-05-20</span>
+<div class="text-right">
+<p class="text-xs font-bold opacity-60">Dosagem</p>
+<p class="font-bold">600 kg/ha</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 border-2 border-primary text-slate-900 dark:text-slate-100 font-bold py-3 rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                            Exportar Relatório PDF
+                        </button>
+</div>
+</section>
+<!-- Soil History Summary -->
+<section class="lg:col-span-12">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm overflow-x-auto">
+<h3 class="text-lg font-bold mb-4">Comparativo Histórico - Gleba A-12</h3>
+<table class="w-full text-left">
+<thead class="bg-background-light dark:bg-background-dark border-b border-primary/10">
+<tr>
+<th class="px-4 py-3 text-xs font-bold uppercase">Data da Análise</th>
+<th class="px-4 py-3 text-xs font-bold uppercase">N (mg/dm³)</th>
+<th class="px-4 py-3 text-xs font-bold uppercase">P (mg/dm³)</th>
+<th class="px-4 py-3 text-xs font-bold uppercase">K (cmolc/dm³)</th>
+<th class="px-4 py-3 text-xs font-bold uppercase">Produtividade Est.</th>
+<th class="px-4 py-3 text-xs font-bold uppercase text-right">Ação</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5">
+<td class="px-4 py-4 text-sm font-medium">12/10/2023</td>
+<td class="px-4 py-4 text-sm font-bold">14.2</td>
+<td class="px-4 py-4 text-sm font-bold text-primary">8.5</td>
+<td class="px-4 py-4 text-sm font-bold">0.45</td>
+<td class="px-4 py-4 text-sm">145 sc/ha</td>
+<td class="px-4 py-4 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Ver Detalhes</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5">
+<td class="px-4 py-4 text-sm font-medium">05/03/2023</td>
+<td class="px-4 py-4 text-sm font-bold">12.8</td>
+<td class="px-4 py-4 text-sm font-bold">10.2</td>
+<td class="px-4 py-4 text-sm font-bold">0.41</td>
+<td class="px-4 py-4 text-sm">132 sc/ha</td>
+<td class="px-4 py-4 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Ver Detalhes</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="p-6 text-center opacity-40 text-xs">
+                © 2024 AgroPop Pro - Tecnologia de Precisão para o Agronegócio
+            </footer>
+</main>
+</div>
+</body></html>

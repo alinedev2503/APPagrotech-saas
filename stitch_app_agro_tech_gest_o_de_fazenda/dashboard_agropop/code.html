@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroPop - Centro de Decisão</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6dec13",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182210",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .rustic-border { border: 2px solid #182210; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 md:px-20">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-background-dark font-bold">agriculture</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">AgroPop</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 bg-slate-200/50 dark:bg-slate-800/50 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Fazenda Sol Nascente</span>
+</div>
+<button class="relative flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Perfil do produtor rural" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmMFbWyA9XduGLnUVqbGqexxUHm7NOs8KLvlToONaoemS0_YL6xdjksgnNBQ-aU3GFpfEJF3ZOspvXFv_bH3f487EO_fNHU54F4bAo6Kzz3BBjRTYMp8VbaZFxbufhkg4abcsDPCnFySEQzX8ZZyyv8WR6ipmBmsRbDIZIVN7wfJLlwqKNOQymutaShFpE3A5QI50bP0Ux4OHIlMQhC0Yw_Xi0GnekLb8McUZet9KPRJJWNd2ppnp4h88KPElU3axJ2Kf0yRaKmiMm"/>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 py-8 md:px-20 max-w-7xl mx-auto w-full">
+<section class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tighter uppercase italic">Centro de Decisão</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2 text-lg">Gestão rural inteligente com estética industrial.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">add_circle</span> Novo Lote
+                        </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 flex flex-col gap-8">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">warning</span> Próxima Ação Climática
+                            </h2>
+<span class="text-xs font-bold uppercase text-primary">Status: Alerta Máximo</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[16/10] rustic-border">
+<img class="absolute inset-0 h-full w-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="Plantação de soja sob geada matinal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQUbbhXQt1q4yBtsvS5iQqyuIezGk91o6cheOi7FCvRDoeKhRX2nI_TIKpuLct9-WKQ24_N1Q8Ea5RznAK_WvbYezOUlzwqmUAeo-JMr2YtyEe3MQ0hp0DtopCfElOwLq09ARWvo0BrNz1-cJkivMvbMnCxDUU_wjkVCTYccT_Ob2i0fdEos8XvCtGRsh-LCm8sru6ttZGK0BYxFESJwE_MYUWzUG8J7DagmN3FD6nP_9qYgn6erNVnr1Ak0gShugTCl2ZZqGs24Lo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">Urgente</span>
+<span class="text-white/70 text-xs font-medium">Em 4 horas</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2 leading-tight">Alerta de Geada: Setor Sul</h3>
+<p class="text-white/80 text-sm mb-4">Risco alto para hortaliças. Ativar sistema de irrigação por aspersão agora.</p>
+<button class="w-full bg-primary py-3 rounded-lg text-background-dark font-black uppercase text-xs tracking-widest">Executar Protocolo</button>
+</div>
+<div class="absolute top-6 right-6">
+<span class="material-symbols-outlined text-primary text-5xl opacity-80">ac_unit</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[16/10] rustic-border">
+<img class="absolute inset-0 h-full w-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="Plantação de milho sob sol intenso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZyEdYl2JhpCKeWarAyLB0GwezXLo-ucrfi2n0O8SRFcA71zKcjiod-aFiDvJL7p_wpCtvjjYEi3yKPdPPM3IBsCXDUstO4eMSkKjNxS9WUwcf1hXL4X_puLytW45sSEV7Vl025KpNCnqpWh8GZjM2-hp1HI7S4LW5iQ_BIAAr6fWFEi27VTJqaWXYH0OQ2x9huqF70RNYddFu9Bz701YvUw0At4pPZfYzJsOsMU3-5ls_57Y7G1rgcD9GGoE_cMCTAbLELW8-AXoz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-background-dark text-[10px] font-black px-2 py-0.5 rounded uppercase">Otimização</span>
+<span class="text-white/70 text-xs font-medium">Janela: 48h</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2 leading-tight">Plantio: Milho Safrinha</h3>
+<p class="text-white/80 text-sm mb-4">Umidade do solo ideal detectada. Previsão de chuvas leves favoráveis.</p>
+<button class="w-full bg-white py-3 rounded-lg text-background-dark font-black uppercase text-xs tracking-widest">Ver Mapa de Plantio</button>
+</div>
+<div class="absolute top-6 right-6">
+<span class="material-symbols-outlined text-primary text-5xl opacity-80">wb_sunny</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span> Resumo de Mercado (B3)
+                        </h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl rustic-border">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Soja (SJC)</p>
+<p class="text-xl font-black">R$ 134,20</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> +1.45%
+                                </div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl rustic-border border-primary">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Milho (CCM)</p>
+<p class="text-xl font-black">R$ 58,15</p>
+<div class="flex items-center gap-1 text-red-500 text-xs font-bold mt-2">
+<span class="material-symbols-outlined text-sm">trending_down</span> -0.82%
+                                </div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl rustic-border">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Boi Gordo (BGI)</p>
+<p class="text-xl font-black">R$ 231,50</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.25%
+                                </div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl rustic-border">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Café (ICF)</p>
+<p class="text-xl font-black">R$ 1.045,00</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2.10%
+                                </div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-slate-900 text-white rounded-2xl p-6 rustic-border h-full flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-lg font-bold uppercase tracking-widest italic">Visão Geral</h2>
+<span class="material-symbols-outlined text-primary">sensors</span>
+</div>
+<div class="space-y-6 flex-1">
+<div class="relative pl-6 border-l-2 border-primary/30">
+<div class="absolute -left-1.5 top-0 size-3 rounded-full bg-primary"></div>
+<p class="text-xs font-bold text-primary uppercase">Saúde Animal</p>
+<p class="text-2xl font-black">94% <span class="text-xs text-slate-400 font-normal ml-1">Estável</span></p>
+<div class="w-full bg-slate-800 h-1.5 mt-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+<div class="relative pl-6 border-l-2 border-primary/30">
+<div class="absolute -left-1.5 top-0 size-3 rounded-full bg-primary"></div>
+<p class="text-xs font-bold text-primary uppercase">Estoque Insumos</p>
+<p class="text-2xl font-black">62% <span class="text-xs text-slate-400 font-normal ml-1">Reposição Sugerida</span></p>
+<div class="w-full bg-slate-800 h-1.5 mt-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[62%]"></div>
+</div>
+</div>
+<div class="relative pl-6 border-l-2 border-primary/30">
+<div class="absolute -left-1.5 top-0 size-3 rounded-full bg-amber-500"></div>
+<p class="text-xs font-bold text-amber-500 uppercase">Eficiência Energética</p>
+<p class="text-2xl font-black">48% <span class="text-xs text-slate-400 font-normal ml-1">Horário de Pico</span></p>
+<div class="w-full bg-slate-800 h-1.5 mt-2 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[48%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-800">
+<div class="flex items-center gap-4 mb-4">
+<img class="size-12 rounded-lg object-cover" data-alt="Foto do veterinário responsável" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhde_bJpNPzvRJrHUAgIZzkndgYl7PVB9S1opRYn-4ZN7ahgKlXg2_VVBW0YNDbRz0CsJrXPpXODtiIl7TF1DZBvv5ppvpomo04TxZO1NDDintlfJAJr1tK3GkkSUk3dCLr-U6LTLvd7R22sM03A6EBHnuOSfhBI-Mn26s15I3MNuKxL4Rz5uasBuBtDSkn83htxdnKWf68fiykgNhxzE_0hKlj2fEjPMCQPzyyenXLA2JQhlF-G4TFZ0dYXVOSwXP6J8DxVh-iOLN"/>
+<div>
+<p class="text-sm font-bold">Dra. Amanda Silva</p>
+<p class="text-xs text-slate-400 italic">Veterinária Responsável</p>
+</div>
+</div>
+<button class="w-full py-4 bg-slate-800 border border-slate-700 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-slate-700">Contatar Suporte Técnico</button>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden rustic-border bg-background-dark h-48 relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50" data-alt="Vista aérea da fazenda com maquinaria" data-location="Interior do Brasil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPjLCJAkgXSeLTrRfTlZfPgwmkIRd7zLq8sJn6I3yZMys9O9IUYUnzKo-0TqqKE-UvrRDNfON1mOz-I8-6fXi-vNg6suEv4Ejm8wbOAoTURVJlxC7mSKHfxxix4gQYqmqZ4qMrLAUZBH0zFDcRaUJwqsooKvbj-0juO7pHc3fIF98BIRIx3mD7fgFyqmR783oZ-a051S1qluH-KzCndMaGXPghMTfq57P1SUta01R6sYSolm86RfKoALuTc-4DxcikRjm5p2agmY2p"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-white text-4xl">map</span>
+<p class="text-white font-black uppercase text-xs mt-2 tracking-widest">Abrir Mapa Satélite</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="mt-12 pb-12">
+<h2 class="text-xl font-bold mb-6 flex items-center gap-2 italic uppercase">
+<span class="material-symbols-outlined text-primary">inventory</span> Maquinário Ativo
+                </h2>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<div class="min-w-[280px] bg-white dark:bg-slate-900 p-4 rounded-2xl rustic-border flex items-center gap-4">
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500 uppercase">Trator T-800</p>
+<p class="text-sm font-black">Setor Leste 04</p>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded font-bold">OPERANDO</span>
+</div>
+</div>
+<div class="min-w-[280px] bg-white dark:bg-slate-900 p-4 rounded-2xl rustic-border flex items-center gap-4 border-primary">
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">drone</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500 uppercase">Drone DJI-Agro</p>
+<p class="text-sm font-black">Mapeamento NDVI</p>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded font-bold">EM VOO</span>
+</div>
+</div>
+<div class="min-w-[280px] bg-white dark:bg-slate-900 p-4 rounded-2xl rustic-border flex items-center gap-4">
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500 uppercase">Irrigação Central</p>
+<p class="text-sm font-black">Pivô 01 - Standby</p>
+<span class="text-[10px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded font-bold">AGENDADO</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="sticky bottom-0 z-50 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center py-4 px-6 md:hidden">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Painel</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">thermostat</span>
+<span class="text-[10px] font-bold uppercase">Clima</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-[10px] font-bold uppercase">Mercado</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase">Ajustes</span>
+</button>
+</nav>
+</div>
+</body></html>

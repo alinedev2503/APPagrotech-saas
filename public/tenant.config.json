@@ -1,0 +1,19 @@
+{
+  "appName": "AgroTech Enterprise",
+  "appShortName": "AGRO",
+  "appTagline": "Acesse sua fazenda digital",
+  "logoUrl": "",
+  "theme": {
+    "primaryColor": "#16a34a",
+    "primaryColorHover": "#15803d",
+    "primaryColorLight": "#dcfce7"
+  },
+  "features": {
+    "marketIntelligence": true,
+    "sanitary": true,
+    "crops": true,
+    "stock": true,
+    "animals": true,
+    "team": true
+  }
+}

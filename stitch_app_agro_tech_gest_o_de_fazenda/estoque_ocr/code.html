@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroPop - Estoque OCR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#6dec13",
+                "background-light": "#f7f8f6",
+                "background-dark": "#182210",
+              },
+              fontFamily: {
+                "display": ["Space Grotesk"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .scanner-overlay {
+            background: linear-gradient(rgba(109, 236, 19, 0.1) 2px, transparent 2px) 0 0 / 100% 40px;
+        }
+        .corner-border {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #6dec13;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">barcode_scanner</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Estoque OCR</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit_note</span>
+                    Entrada Manual
+                </button>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-slate-900 dark:text-slate-100 hover:bg-primary/20">
+<span class="material-symbols-outlined">flashlight_on</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-slate-900 dark:text-slate-100 hover:bg-primary/20">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col md:flex-row gap-0 overflow-hidden">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col w-64 border-r border-primary/10 p-4 gap-6 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+<img alt="User Profile" class="size-full object-cover" data-alt="Profile picture of a warehouse manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYLpgpaGa-x9ZXkdlN3qAg2Xs1QyK5-N9lYYPCT_twp4031JnBYKwTfswQQQgdlqdWqiu4_ioqsEzpanmVC_0Kr_X9O28HsmpmNJ_SBfuaRWQTn-lOrQLg1kXg5oSR8zbze4FesV6H-_HLoyux91TTT8nV4sCILQ6rNcy3Aq1OquIzwn40OpDNCAnb3_0BpX_VRSrdIkO_3ghlWUdi8rw35mma608jZIob9WvNOiCWfz8-MTVleF6uls22Mit71m_BEFgkGqZ29V4J"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold">AgroPop Ops</span>
+<span class="text-xs text-slate-500">Almoxarifado Norte</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventário</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-sm font-bold">Scanner OCR</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Configurações</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col lg:flex-row h-full">
+<!-- Camera Viewfinder -->
+<div class="flex-[3] relative bg-black flex items-center justify-center overflow-hidden min-h-[400px]">
+<!-- Simulated Camera Feed -->
+<div class="absolute inset-0 opacity-80 scanner-overlay"></div>
+<img alt="Invoice Scan View" class="w-full h-full object-cover grayscale-[20%]" data-alt="Close up of a paper invoice with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD35qPpV6etTg1W7MUlZyPdorTo3IvHzuqdDRDTl6NOAFoPnQe-fJ0WSgHmdEtX_PoIa-lDw93YayhajFA-XinP5Ylwy0ja1GJ_kA9vi37-4bJMPsTrLqfUkEx2IsffMTnB-E2Igl5pGocmoIHSTOn6VMk4gG2jgcpm5idOLZU2oIHjAIs7okgCqknbNRE9uys8LtnTJRDqWjb-Mc5bxjpttvIyCWrOe3fmUAWn4iLtIJqSwoQYKQx3boqcWGVrAA5kwJFIc59W9_u6"/>
+<!-- Scan Reticle -->
+<div class="absolute inset-0 flex items-center justify-center p-10 md:p-20">
+<div class="relative w-full h-full max-w-2xl border-2 border-primary/30 rounded-xl">
+<!-- Corners -->
+<div class="corner-border top-0 left-0 border-t-4 border-l-4 rounded-tl-xl"></div>
+<div class="corner-border top-0 right-0 border-t-4 border-r-4 rounded-tr-xl"></div>
+<div class="corner-border bottom-0 left-0 border-b-4 border-l-4 rounded-bl-xl"></div>
+<div class="corner-border bottom-0 right-0 border-b-4 border-r-4 rounded-br-xl"></div>
+<!-- Scanning Line -->
+<div class="absolute w-full h-1 bg-primary/60 shadow-[0_0_15px_rgba(109,236,19,0.8)] top-1/4 animate-pulse"></div>
+<!-- Detected Bounding Boxes (Mockup) -->
+<div class="absolute top-[20%] left-[10%] w-[40%] h-[5%] border border-primary bg-primary/10 rounded backdrop-blur-[2px] flex items-center px-2">
+<span class="text-[10px] font-bold text-primary uppercase">CNPJ Emissor</span>
+</div>
+<div class="absolute top-[30%] right-[10%] w-[30%] h-[5%] border border-primary bg-primary/10 rounded backdrop-blur-[2px] flex items-center px-2">
+<span class="text-[10px] font-bold text-primary uppercase">Data Emissão</span>
+</div>
+<div class="absolute bottom-[15%] right-[10%] w-[35%] h-[8%] border border-primary bg-primary/10 rounded backdrop-blur-[2px] flex items-center px-2">
+<span class="text-[10px] font-bold text-primary uppercase">Valor Total</span>
+</div>
+</div>
+</div>
+<!-- Floating Status -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-6 py-3 rounded-full border border-primary/30 flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<span class="text-white text-sm font-medium">Processando OCR...</span>
+</div>
+<div class="h-4 w-px bg-white/20"></div>
+<span class="text-primary text-sm font-bold">84%</span>
+</div>
+</div>
+<!-- Fields Panel -->
+<div class="flex-[2] bg-background-light dark:bg-background-dark border-l border-primary/10 p-6 flex flex-col gap-6 overflow-y-auto">
+<div>
+<h3 class="text-xl font-bold mb-1">Dados Identificados</h3>
+<p class="text-sm text-slate-500">Confira os campos extraídos automaticamente.</p>
+</div>
+<div class="space-y-4">
+<!-- Field Group -->
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Número da Nota (DANFE)</label>
+<div class="relative group">
+<input class="w-full bg-white dark:bg-slate-900 border border-primary/20 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" readonly="" type="text" value="3523 0910 5462 8800 0110 5500"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary text-lg">verified</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Data de Emissão</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-primary/20 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="22/10/2023"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Valor Total</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-primary/20 rounded-lg px-4 py-3 text-sm font-bold text-primary focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="R$ 14.250,00"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Fornecedor Identificado</label>
+<div class="flex items-center gap-3 p-3 bg-primary/5 border border-primary/10 rounded-lg">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">factory</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">AgroFertil Soluções Ltda.</p>
+<p class="text-[10px] text-slate-500">CNPJ: 10.546.288/0001-10</p>
+</div>
+</div>
+</div>
+<div class="space-y-2 pt-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Itens Detectados (3)</label>
+<div class="border border-primary/10 rounded-lg divide-y divide-primary/5 bg-white dark:bg-slate-900">
+<div class="p-3 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs font-medium">Fertilizante NPK 10-10-10</span>
+<span class="text-[10px] text-slate-500">UN: SC | QTD: 50</span>
+</div>
+<span class="text-xs font-bold">R$ 7.500,00</span>
+</div>
+<div class="p-3 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs font-medium">Semente Milho Híbrido</span>
+<span class="text-[10px] text-slate-500">UN: KG | QTD: 120</span>
+</div>
+<span class="text-xs font-bold">R$ 4.800,00</span>
+</div>
+<div class="p-3 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs font-medium">Defensivo Agrícola XP</span>
+<span class="text-[10px] text-slate-500">UN: LT | QTD: 25</span>
+</div>
+<span class="text-xs font-bold">R$ 1.950,00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto flex gap-3 pt-6 border-t border-primary/10">
+<button class="flex-1 py-3 px-4 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-colors">
+                            REESCANEAR
+                        </button>
+<button class="flex-[2] py-3 px-4 rounded-lg bg-primary text-slate-900 font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+                            CONFIRMAR ENTRADA
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar (Mobile Only) -->
+<nav class="md:hidden grid grid-cols-4 border-t border-primary/10 bg-background-light dark:bg-background-dark py-2 px-1">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Início</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px]">Estoque</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-[10px] font-bold">OCR</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">menu</span>
+<span class="text-[10px]">Mais</span>
+</button>
+</nav>
+</div>
+</body></html>

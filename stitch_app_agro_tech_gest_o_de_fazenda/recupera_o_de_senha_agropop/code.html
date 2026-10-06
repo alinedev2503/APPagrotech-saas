@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6dec13",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182210",
+                        "border-muted": "#d9e7cf",
+                        "text-main": "#131b0d",
+                        "text-muted": "#6c9a4c"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .dotted-grid {
+            background-image: radial-gradient(#6c9a4c 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased">
+<div class="relative min-h-screen flex flex-col items-center justify-center p-4">
+<!-- Subtle Dotted Background -->
+<div class="absolute inset-0 dotted-grid pointer-events-none"></div>
+<!-- Main Card Container -->
+<div class="relative w-full max-w-[480px] bg-white dark:bg-zinc-900 shadow-2xl rounded-xl overflow-hidden border border-border-muted dark:border-zinc-800">
+<!-- Header Image Section -->
+<div class="relative h-48 w-full bg-background-dark overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Aerial view of green agricultural fields at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC62IiFZYoG0EepLyiWL3NQ8ASSt3AtFzG0hFZPR3NdSoYer--_Fnb0ODKjZF1tYk5UMfIKzOYKtjVypvUos_oP7p_RpzGX4A_vECT7yZTj1hheoSV6oeGv8l54otDuKMSSrd7o7Nh8Echd16U37Yyxx5MuYNBVoqKOmRzB0vPEjIfZdeUJdjIqB7Z0ABTozkybZ4hIUxNE5AkkOYZ8u1Ut-QXR3cNlK2KiabMCohtSaSm7odULMyitB7TArFnv40lsH5GJEh_sHs6l');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-6 left-8 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-background-dark font-bold">agriculture</span>
+</div>
+<h1 class="text-white text-3xl font-bold tracking-tight">AgroPop</h1>
+</div>
+</div>
+<!-- Content Section -->
+<div class="p-8 md:p-10 flex flex-col gap-8">
+<div class="flex flex-col gap-2">
+<h2 class="text-text-main dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">Recuperar senha</h2>
+<p class="text-text-muted dark:text-slate-400 text-base font-normal leading-relaxed">
+                        Informe seu e-mail cadastrado e enviaremos as instruções para criar uma nova senha.
+                    </p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-6" onsubmit="return false;">
+<div class="flex flex-col gap-2">
+<label class="text-text-main dark:text-slate-200 text-sm font-bold uppercase tracking-wider">E-mail</label>
+<div class="group relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-text-muted group-focus-within:text-primary transition-colors">
+                                mail
+                            </span>
+<input class="w-full h-14 pl-12 pr-4 bg-background-light dark:bg-zinc-800 border-2 border-border-muted dark:border-zinc-700 rounded-lg text-text-main dark:text-white focus:border-primary focus:ring-0 transition-all outline-none" placeholder="exemplo@agropop.com.br" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-4 pt-2">
+<button class="w-full h-14 bg-primary text-background-dark font-black text-lg rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 uppercase tracking-wide">
+<span>Enviar instruções</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+<a class="flex items-center justify-center gap-2 text-text-muted hover:text-text-main dark:hover:text-primary transition-colors py-2 group" href="#">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-bold text-sm">Voltar para o login</span>
+</a>
+</div>
+</form>
+</div>
+<!-- Footer decoration -->
+<div class="h-1.5 w-full bg-primary/20">
+<div class="h-full bg-primary w-1/3"></div>
+</div>
+</div>
+<!-- System Status / Support -->
+<div class="mt-8 flex gap-6 text-text-muted text-xs font-bold uppercase tracking-widest">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                Suporte
+            </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                Segurança
+            </a>
+</div>
+</div>
+</body></html>
